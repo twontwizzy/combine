@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Combine.CombineParticipants">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Combine Participants" 
+           VerticalOptions="Start" 
+           HorizontalOptions="Center"
+           TextColor="Black" Font="Bold, 20" />
+            <ListView x:Name="ParticipantList" ItemSelected="ParticipantList_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="100">
+                            <StackLayout Orientation="Horizontal"  MinimumHeightRequest="100" Margin="0,15,0,0">
+                                <Label Text="{Binding ParticipantFirstName}" TextColor="Black" HeightRequest="100"/>
+                                <Label Text="{Binding ParticipantsLastName}" TextColor="Black" HeightRequest="100"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label IsVisible="False" x:Name="HiddenCombineID"/>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
