@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Combine.CombineParticipants">
+             x:Class="Combine.CombineParticipants"
+             Title="Combine Participants">
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <Label Text="Combine Participants" 
-           VerticalOptions="Start" 
-           HorizontalOptions="Center"
-           TextColor="Black" Font="Bold, 20" />
+            
             <ListView x:Name="ParticipantList" ItemSelected="ParticipantList_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -23,5 +21,5 @@
             <Label IsVisible="False" x:Name="HiddenCombineID"/>
         </StackLayout>
         
-    </ContentPage.Content>
+    </ContentPage.Content> 
 </ContentPage>

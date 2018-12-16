@@ -31,6 +31,8 @@ namespace Combine
 
             ParticipantList.ItemsSource = particicpants;
             HiddenCombineID.Text = combineID.ToString();
+
+            Title = particicpants[0].CombineName;
         }
 
         private void ParticipantList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -39,7 +41,7 @@ namespace Combine
             var id = Convert.ToInt32(p.ParticipantID);
             int participantID = Convert.ToInt32(id);
 
-            Navigation.PushAsync(new ParticipantTestPage(int.Parse(HiddenCombineID.Text), participantID), true);
+            Navigation.PushAsync(new TestPage(int.Parse(HiddenCombineID.Text), participantID), true);
         }
     }
 }

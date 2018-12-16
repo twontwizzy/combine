@@ -14,30 +14,34 @@ namespace Combine
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ParticipantTestPage : ContentPage
 	{
-		public ParticipantTestPage (int combineID, int participantID)
+		public ParticipantTestPage (int participantTestID)
 		{
 			InitializeComponent ();
 
-            GetTest(combineID, participantID);
+            GetTest(participantTestID);
 		}
 
-        private async void GetTest(int combineID, int participantID)
+        private async void GetTest(int participantTestID)
         {
             HttpClient client = new HttpClient();
 
-            var response = await client.GetStringAsync("http://combine.gear.host/api/combine/test/" + combineID + "/" + participantID);
+            var response = await client.GetStringAsync("http://combine.gear.host/api/combine/testresults/" + participantTestID);
 
-            var particicpants = JsonConvert.DeserializeObject<List<CombineTest>>(response);
+            var particicpants = JsonConvert.DeserializeObject<List<CombineResult>>(response);
 
             TestList.ItemsSource = particicpants;
+            Title = particicpants[0].PageTitle;
         }
 
         private async void btnSave_Clicked(object sender, EventArgs e)
         {
 
-            List<CombineTest> cList = new List<CombineTest>();
+            List<CombineResult> cList = new List<CombineResult>();
+
+            int cid = 0;
+            int pid = 0;
             
-            foreach (CombineTest item in TestList.ItemsSource)
+            foreach (CombineResult item in TestList.ItemsSource)
             {
                 var json = JsonConvert.SerializeObject(item);
 
@@ -45,10 +49,13 @@ namespace Combine
 
                 HttpClient client = new HttpClient();
 
+                pid = item.ParticipantID;
+                cid = item.CombineTestID;
+
                 await client.PutAsync("http://combine.gear.host/api/combine", content);
             }
 
-            
+            await Navigation.PushAsync(new TestPage(cid, pid), true);
         }
     }
 }

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Combine.TestPage"
+             Title="Combine Test">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            
+            <ListView x:Name="TestList" ItemSelected="TestList_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" MinimumHeightRequest="100" Margin="0,15,0,0">
+
+                                <Label Text="{Binding Test}" TextColor="Black" HeightRequest="100"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -10,7 +10,7 @@ using System.IO;
 
 namespace Combine.Droid
 {
-    [Activity(Label = "Combine", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Combine", Icon = "@drawable/JRCombine", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -20,12 +20,9 @@ namespace Combine.Droid
 
             base.OnCreate(bundle);
 
-            string fileName = "combine_db.sqlite";
-            string fileLocation = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            string fullPath = Path.Combine(fileLocation, fileName);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App(fullPath));
+            LoadApplication(new App());
         }
     }
 }
