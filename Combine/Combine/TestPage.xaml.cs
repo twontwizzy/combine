@@ -21,6 +21,7 @@ namespace Combine
             GetTest(combineID, participantID);
         }
 
+
         private async void GetTest(int combineID, int participantID)
         {
             HttpClient client = new HttpClient();
@@ -35,6 +36,9 @@ namespace Combine
 
         private void TestList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem == null)
+                return;
+
             var p = (CombineTest)e.SelectedItem;
             var id = Convert.ToInt32(p.CombineTestID);
             int participantID = Convert.ToInt32(id);

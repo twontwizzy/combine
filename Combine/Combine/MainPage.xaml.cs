@@ -38,6 +38,9 @@ namespace Combine
 
         private void combineList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem == null)
+                return;
+
             var c = (Combine)e.SelectedItem;
             var id = Convert.ToInt32(c.CombineID);
             int combineID =  Convert.ToInt32(id);

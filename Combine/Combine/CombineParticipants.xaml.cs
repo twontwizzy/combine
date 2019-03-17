@@ -19,7 +19,9 @@ namespace Combine
 			InitializeComponent ();
 
             GetParticipants(combineID);
-		}
+        }
+
+
 
         private async void GetParticipants(int combineID)
         {
@@ -29,6 +31,8 @@ namespace Combine
 
             var particicpants = JsonConvert.DeserializeObject<List<Participants>>(response);
 
+            ParticipantList.SelectedItem = null;
+
             ParticipantList.ItemsSource = particicpants;
             HiddenCombineID.Text = combineID.ToString();
 
@@ -37,6 +41,8 @@ namespace Combine
 
         private void ParticipantList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            
+
             var p = (Participants)e.SelectedItem;
             var id = Convert.ToInt32(p.ParticipantID);
             int participantID = Convert.ToInt32(id);
